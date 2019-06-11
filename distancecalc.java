@@ -1,3 +1,4 @@
+//This is a Java program for finding the distance between two points
 import java.lang.Math;
 public class distancecalc {
 
