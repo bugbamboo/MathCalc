@@ -5,7 +5,7 @@ import java.awt.Color;
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
 import static java.lang.Math.sqrt;
-
+import static java.lang.Math.pow;
 
 
 public class physicscalc extends JFrame
@@ -108,16 +108,27 @@ class GraphingParabolas
 {
     public static void main( String[] args )
     {
+
+
+
         double y=0;
         double a, b, c;
-        double initialVelocity,launchAngle,initialHeight,frictionCoefficient,weight;
+        double initialVelocity,launchAngle,initialHeight,frictionCoefficient,weight,f;
         double sin,cos;
+        int p= Runtime.getRuntime().availableProcessors();
 
+        f=0.7* pow(10,-p);
         initialVelocity=10.0;
         launchAngle=40.0;
         initialHeight=10.0;
         frictionCoefficient=0.5;
         weight=15.0;
+
+
+
+       
+
+
         sin = sin(launchAngle*Math.PI/180);
         cos = cos(launchAngle*Math.PI/180);
 
@@ -125,7 +136,7 @@ class GraphingParabolas
 
         System.out.print(projectileCalc(initialVelocity,launchAngle,initialHeight,frictionCoefficient,weight));
         physicscalc gp1 = new physicscalc(10,10);
-        for ( double x = 0; x<=100&y>=0; x+=0.00007)//Graphing function
+        for ( double x = 0; x<=100&y>=0; x+=f)//Graphing function
         {
             a = -9.80665/(sin*sin*initialVelocity*initialVelocity);
             b = sin/cos; c = initialHeight;
@@ -137,7 +148,7 @@ class GraphingParabolas
 
     }
 
-//Import Statements for Math
+
 
 
 
@@ -169,7 +180,7 @@ class GraphingParabolas
         vmax=sqrt(vx*vx+vymax*vymax);
 
 //Return Statement
-        return "This projectile has a kinetic energy of " + kenergy+" Joules, enough to power an average American home for "+kenergy/5161+" seconds."+"\n"+"This projectile will land "+dist+" meters from the starting point and will slide for " +dslide+" meters after hitting the ground"+"\n"+ "This projectile will travel a total of " +(dslide+dist)+" meters travelled horizontally."+"\n"+ "This projectile will be in the air for "+time+" seconds."+"\n"+"The maximum height of this projectile is "+apog+" meters."+"\n"+"This projectile will take "+tapog+" seconds to reach that maximum and will fall for "+fapog+" seconds after reaching that apogee." +"\n"+"This projectile has a maximum velocity of "+vmax+" meters per second.";
+        return "This projectile has a kinetic energy of " + kenergy+" Joules, enough to power an average American home for "+kenergy/5161+" seconds."+"\n"+"This projectile will land "+dist+" meters from the starting point and will slide for " +dslide+" meters after hitting the ground."+"\n"+ "This projectile will travel a total of " +(dslide+dist)+" meters travelled horizontally."+"\n"+ "This projectile will be in the air for "+time+" seconds."+"\n"+"The maximum height of this projectile is "+apog+" meters."+"\n"+"This projectile will take "+tapog+" seconds to reach that maximum and will fall for "+fapog+" seconds after reaching that apogee." +"\n"+"This projectile has a maximum velocity of "+vmax+" meters per second.";
 
     }
 
