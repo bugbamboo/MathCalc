@@ -115,20 +115,76 @@ class GraphingParabolas
 
         double y=0;
         double a, b, c;
-        double initialVelocity,launchAngle,initialHeight,frictionCoefficient,weight;
-        double sin,cos;
+        double initialVelocity = 0;
+        double launchAngle =0;
+        double initialHeight=0;
+        double frictionCoefficient=0;
+        double weight=0;
+        double sin,cos=0;
+
+        try {
+            System.out.println("Please Enter Projectile Initial Velocity in Meters per Second.");
+            initialVelocity = in.nextDouble();
+
+        }catch (java.util.InputMismatchException e){
+            System.out.println( "Please only Enter Positive Numbers for the Initial Velocity.");
+            System.exit(0);
+        }
+        if (initialVelocity<= 0){
+            System.out.println( "Please only Enter Positive Numbers for the Initial Velocity.");
+            System.exit(0);
+        }
+        try {
+            System.out.println("Please Enter Projectile Launch Angle in Degrees.");
+            launchAngle = in.nextDouble();
+
+        }catch (java.util.InputMismatchException e){
+            System.out.println( "Please only Enter Positive Numbers for the Launch Angle.");
+            System.exit(0);
+        }
+        if (launchAngle<= 0){
+            System.out.println( "Please only Enter Positive Numbers for the Launch Angle.");
+            System.exit(0);
+        }
+        try {
+            System.out.println("Please Enter the Initial Height of the Projectile in Meters.");
+            initialHeight = in.nextDouble();
+
+        }catch (java.util.InputMismatchException e){
+            System.out.println( "Please only Enter Positive Numbers for the Initial Height.");
+            System.exit(0);
+        }
+        if (initialHeight<= 0){
+            System.out.println( "Please only Enter Positive Numbers for the Initial Height.");
+            System.exit(0);
+        }
+        try {
+            System.out.println("Please Enter the Frictional Coefficient of the Projectile, a positive value usually between 0 and 1.");
+            frictionCoefficient = in.nextDouble();
+
+        }catch (java.util.InputMismatchException e){
+            System.out.println( "Please only Enter Positive Numbers for the Frictional Coefficient.");
+            System.exit(0);
+        }
+        if (frictionCoefficient<= 0){
+            System.out.println( "Please only Enter Positive Numbers for the Frictional Coefficient.");
+            System.exit(0);
+        }
+        try {
+            System.out.println("Please Enter the Weight of the Projectile, in Kilograms");
+            weight = in.nextDouble();
+
+        }catch (java.util.InputMismatchException e){
+            System.out.println( "Please only Enter Positive Numbers for the Weight.");
+            System.exit(0);
+        }
+        if (weight<= 0){
+            System.out.println( "Please only Enter Positive Numbers for the Weight.");
+            System.exit(0);
+        }
 
 
-        System.out.println("Please Enter Projectile Initial Velocity in Meters per Second.");
-        initialVelocity= in.nextDouble();
-        System.out.println("Please Enter Projectile Launch Angle in Degrees.");
-        launchAngle=in.nextDouble();
-        System.out.println("Please Enter the Initial Height of the Projectile in Meters.");
-        initialHeight=in.nextDouble();
-        System.out.println("Please Enter the Frictional Coefficient of the Projectile, a positive value usually between 0 and 1.");
-        frictionCoefficient=in.nextDouble();
-        System.out.println("Please Enter the Weight of the Projectile, in Kilograms");
-        weight=in.nextDouble();
+
 
 
 
@@ -142,7 +198,7 @@ class GraphingParabolas
 
         System.out.print(projectileCalc(initialVelocity,launchAngle,initialHeight,frictionCoefficient,weight));
         physicscalc gp1 = new physicscalc(10,10);
-        for ( double x = 0; x<=100&y>=0; x+=0.00007)//Graphing function
+        for ( double x = 0; x<=1000000000&y>=0; x+=0.00007)//Graphing function
         {
             a = -9.80665/(sin*sin*initialVelocity*initialVelocity);
             b = sin/cos; c = initialHeight;
