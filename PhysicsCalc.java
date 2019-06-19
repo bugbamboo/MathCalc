@@ -140,7 +140,7 @@ class GraphingParabolas
             System.out.println( "Please only Enter Positive Numbers Between 0 and 90 for the Launch Angle.");
             System.exit(0);
         }
-        if (launchAngle<= 0|launchAngle>90){
+        if (launchAngle<= 0||launchAngle>90){
             System.out.println( "Please only Enter Positive Numbers Between 0 and 90 for the Launch Angle.");
             System.exit(0);
         }
@@ -247,25 +247,23 @@ System.out.print(projectileCalc(initialVelocity,launchAngle,initialHeight,fricti
         physicscalc gp1 = new physicscalc(10,10);
         for ( double x = 0; x<=1000000000&y>=0; x+=s)//Graphing function
         {
-           if(dist>75000000|apog >75000000) {
+
+            if (dist>10000000||apog >10000000){
                System.out.println("input too large to graph");
                h=0;
-        }
-              else if (dist>10000000|apog >10000000){
-                h=0.00000005;
-             } else if (dist>1000000|apog >1000000){
+            }else if (dist>1000000||apog >1000000){
                 h=0.000005;
-             }else if (dist>100000|apog >100000){
+            }else if (dist>100000||apog >100000){
                 h=0.00005;
-             }else if (dist>10000|apog >10000){
+            }else if (dist>10000||apog >10000){
                 h=0.0005;
-             } else if (dist>1000|apog >1000){
+            }else if (dist>1000||apog >1000){
                 h=0.01;
-            }else if (dist>100|apog >100){
+            }else if (dist>100||apog >100){
                 h=0.1;
-            }else if (dist>50|apog>50){
+            }else if (dist>50||apog>50){
                 h=0.25;
-            }else if (dist>25|apog>25){
+            }else if (dist>25||apog>25){
                 h=0.5;
             }else{
                 h=1;
