@@ -1,4 +1,4 @@
-//This is a Java Program for completing projectile motion calculations like those found in an introductory physics class.
+//This is a Java Program for doing projectile motion calculations like those found in an introductory physics class.
 import javax.swing.JFrame;
 import java.awt.*;
 import java.awt.Color;
@@ -137,11 +137,11 @@ class GraphingParabolas
             launchAngle = in.nextDouble();
 
         }catch (java.util.InputMismatchException e){
-            System.out.println( "Please only Enter Positive Numbers for the Launch Angle.");
+            System.out.println( "Please only Enter Positive Numbers Between 0 and 90 for the Launch Angle.");
             System.exit(0);
         }
-        if (launchAngle<= 0){
-            System.out.println( "Please only Enter Positive Numbers for the Launch Angle.");
+        if (launchAngle<= 0|launchAngle>90){
+            System.out.println( "Please only Enter Positive Numbers Between 0 and 90 for the Launch Angle.");
             System.exit(0);
         }
         try {
@@ -231,34 +231,41 @@ System.out.print(projectileCalc(initialVelocity,launchAngle,initialHeight,fricti
         vymax= -(initialVelocity*sin(rad)-9.80665*time);
         vmax=sqrt(vx*vx+vymax*vymax);
         double sin,cos=0;
+        double s = 0;
+        if (initialVelocity>750)
+        {
+            s=10;
+        }else{
+            s=0.01;
+        }
+
 
         sin = sin(launchAngle*Math.PI/180);
         cos = cos(launchAngle*Math.PI/180);
         double y=0;
         double a, b, c,h;
         physicscalc gp1 = new physicscalc(10,10);
-        for ( double x = 0; x<=1000000000&y>=0; x+=0.00007)//Graphing function
+        for ( double x = 0; x<=1000000000&y>=0; x+=s)//Graphing function
         {
-             if (dist>1000000000){
-            h=0.00000001;
-        }else if (dist>100000000){
-            h=0.0000001;
-
-        }else if (dist>10000000){
-                 h=0.000001;
-             } else if (dist>1000000){
-                 h=0.00001;
-             }else if (dist>100000){
-                 h=0.0001;
-             }else if (dist>10000){
-                h=0.001;
-             } else if (dist>1000){
+           if(dist>75000000|apog >75000000) {
+               System.out.println("input too large to graph");
+               h=0;
+        }
+              else if (dist>10000000|apog >10000000){
+                h=0.00000005;
+             } else if (dist>1000000|apog >1000000){
+                h=0.000005;
+             }else if (dist>100000|apog >100000){
+                h=0.00005;
+             }else if (dist>10000|apog >10000){
+                h=0.0005;
+             } else if (dist>1000|apog >1000){
                 h=0.01;
-            }else if (dist>100){
+            }else if (dist>100|apog >100){
                 h=0.1;
-            }else if (dist>50){
-                h=0.2;
-            }else if (dist>25){
+            }else if (dist>50|apog>50){
+                h=0.25;
+            }else if (dist>25|apog>25){
                 h=0.5;
             }else{
                 h=1;
