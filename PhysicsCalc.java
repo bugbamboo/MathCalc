@@ -1,4 +1,4 @@
-//This is a Java Program for doing projectile motion calculations like those found in an introductory physics class.
+//This is a Java Program for completing projectile motion calculations like those found in an introductory physics class.
 import javax.swing.JFrame;
 import java.awt.*;
 import java.awt.Color;
