@@ -230,13 +230,13 @@ System.out.print(projectileCalc(initialVelocity,launchAngle,initialHeight,fricti
         vx =initialVelocity*cos(rad);
         vymax= -(initialVelocity*sin(rad)-9.80665*time);
         vmax=sqrt(vx*vx+vymax*vymax);
-        double sin,cos=0;
-        double s = 0;
+        double sin,cos;
+        double graphSpeed;
         if (initialVelocity>750)
         {
-            s=10;
+            graphSpeed=10;
         }else{
-            s=0.01;
+            graphSpeed=0.01;
         }
 
 
@@ -245,27 +245,26 @@ System.out.print(projectileCalc(initialVelocity,launchAngle,initialHeight,fricti
         double y=0;
         double a, b, c,h;
         physicscalc gp1 = new physicscalc(10,10);
-        for ( double x = 0; x<=1000000000&y>=0; x+=s)//Graphing function
+        for ( double x = 0; x<=1000000000&y>=0; x+=graphSpeed)//Graphing function
         {
-
-            if (dist>10000000||apog >10000000){
-               System.out.println("input too large to graph");
-               h=0;
-            }else if (dist>1000000||apog >1000000){
-                h=0.000005;
-            }else if (dist>100000||apog >100000){
-                h=0.00005;
-            }else if (dist>10000||apog >10000){
-                h=0.0005;
-            }else if (dist>1000||apog >1000){
-                h=0.01;
-            }else if (dist>100||apog >100){
-                h=0.1;
-            }else if (dist>50||apog>50){
-                h=0.25;
-            }else if (dist>25||apog>25){
-                h=0.5;
-            }else{
+            if (dist>10000000||apog>10000000){
+                System.out.println("Value too large to calculate");
+                h=0;
+                System.exit(0);
+            } else if (dist>25&&apog<=25){
+                h=25/dist;
+            } else if (apog>25&&dist<=25){
+                h=25/apog;
+            } else if (apog>25&&dist>25){
+                if (apog>dist){
+                    h=25/apog;
+                    break;
+                }
+                else{
+                    h = 25 / dist;
+                    break;
+                }
+            } else{
                 h=1;
             }
 
@@ -274,6 +273,7 @@ System.out.print(projectileCalc(initialVelocity,launchAngle,initialHeight,fricti
             y = (a*Math.pow(x,2)+b*x + c);
             gp1.drawPoint(x*h*2,y*h);
         }
+
 //Return Statement
         return "\n"+"\n"+"This projectile has a kinetic energy of " + kenergy+" Joules, enough to power an average American home for "+kenergy/5161+" seconds."+"\n"+"This projectile will land "+dist+" meters from the starting point and will slide for " +dslide+" meters after hitting the ground."+"\n"+ "This projectile will travel a total of " +(dslide+dist)+" meters travelled horizontally."+"\n"+ "This projectile will be in the air for "+time+" seconds."+"\n"+"The maximum height of this projectile is "+apog+" meters."+"\n"+"This projectile will take "+tapog+" seconds to reach that maximum and will fall for "+fapog+" seconds after reaching that apogee." +"\n"+"This projectile has a maximum velocity of "+vmax+" meters per second."+"\n"+"\n";
 
