@@ -1,9 +1,10 @@
 import java.util.Scanner;
+
 import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 
 public class NumberReverser {
-    static int input = 0;
+    private static int input = 0;
     public static void main( String[] args )
 
     {
@@ -12,7 +13,7 @@ public class NumberReverser {
 
         try {
 
-            System.out.println("Please Enter the Integer You Want to Reverse");
+            System.out.println("Please Enter the integer you want to reverse");
 
             input = in.nextInt();
 
@@ -20,7 +21,7 @@ public class NumberReverser {
 
         }catch (java.util.InputMismatchException e){
 
-            System.out.println( "Please Only Enter Integers");
+            System.out.println( "Please only Enter Integers");
 
             System.exit(0);
 
@@ -28,7 +29,7 @@ public class NumberReverser {
     }
         System.out.println(reverse(input));
     }
-    public static  int reverse(int x){
+    private static  int reverse(int x){
         int num1 = abs(x);
         int num2=num1;
         int count=0;
@@ -53,15 +54,20 @@ public class NumberReverser {
             digits[y]*=Math.pow(10,y);
         }
 
-        int reversed = 0;
+        double reversed = 0;
         for (int value : digits) {
             reversed += value;
+
+
         }
         if(x<0){
             reversed= reversed*-1;
         }
+       if (reversed>2147483647 ||reversed<-2147483647){
+            return 0;
+        }
+        int g = (int)reversed;
 
-        return reversed;
+
+        return g;
     }
-}
-
